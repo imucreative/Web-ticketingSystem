@@ -13,7 +13,6 @@ class Vendor_model extends Ci_Model{
     }
     
     function getVendorById($vendorId){
-		$this->db->where('delete', 0);
 		$this->db->where('vendorId', $vendorId);
 		$query	= $this->db->get($this->table);
 		return $query;

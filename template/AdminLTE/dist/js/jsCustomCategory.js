@@ -73,7 +73,7 @@ function editCategory(id){
 
 
 
-function save(){
+function saveCategory(){
     $('#btnSave').text('saving...'); //change button text
     $('#btnSave').attr('disabled',true); //set button disable 
     var url;

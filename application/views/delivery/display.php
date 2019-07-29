@@ -99,6 +99,15 @@
             <!-- /.box-body -->
             <div class="box-footer">
                 <a href="<?php echo base_url();?>index.php/delivery" class="btn btn-default" ><i class='fa fa-arrow-left'></i> Cancel</a>
+                <?php
+                    if($this->session->userdata('status') == 2){
+                        if(empty($row->dateIn)){
+                            echo anchor('delivery/in/'.$row->deliveryId, '<i class="fa fa-sign-in"></i> In', ["class"=>"btn btn-sm btn-warning pull-right", "title"=>"In", "onclick"=>"return confirm('Are you sure In this vendor?')"]);
+                        }else if((isset($row->dateIn))&&(empty($row->dateOut))){
+                            echo anchor("delivery/out/".$row->deliveryId, '<i class="fa fa-sign-out"></i> Out', ["class"=>"btn btn-sm btn-success pull-right", "title"=>"Out", "onclick"=>"return confirm('Are you sure Out this vendor?')"]);
+                        }
+                    }
+                ?>
             </div>
             <!-- /.box-footer-->
             

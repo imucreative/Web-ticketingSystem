@@ -30,7 +30,7 @@
             <thead>
                 <tr>
                     <th width='7%'></th>
-                    <th width='19%'><center>VENDOR</center></th>
+                    <th width='19%'><center>CUSTOMER</center></th>
                     <th width='13%'><center>SCHEDULE</center></th>
                     <th width='13%'><center>NO.POLICE</center></th>
                     <th width='13%'><center>NIK</center></th>

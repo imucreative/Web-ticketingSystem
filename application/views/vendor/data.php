@@ -2,12 +2,12 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Vendor
+      Customer
       <small>it all starts here</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="<?php echo base_url();?>index.php/home"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class="active">Vendor</li>
+      <li class="active">Customer</li>
     </ol>
   </section>
 
@@ -17,7 +17,7 @@
     <!-- Default box -->
     <div class="box">
       <div class="box-header with-border">
-        <h3 class="box-title">Data Vendor</h3>
+        <h3 class="box-title">Data Customer</h3>
 
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -30,7 +30,7 @@
           <thead>
               <tr>
                   <th width='5%'><center>NO</center></th>
-                  <th width='25%'><center>VENDOR NAME</center></th>
+                  <th width='25%'><center>CUSTOMER NAME</center></th>
                   <th width='10%'><center>CATEGORY</center></th>
                   <th width='20%'><center>ADDRESS</center></th>
                   <th width='10%'><center>TELP</center></th>

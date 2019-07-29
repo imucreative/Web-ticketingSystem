@@ -2,13 +2,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-        Vendor
+        Customer
         <small>it all starts here</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="<?php echo base_url();?>index.php/home"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="<?php echo base_url();?>index.php/vendor">Vendor</a></li>
-            <li class="active">Display Vendor</li>
+            <li><a href="<?php echo base_url();?>index.php/vendor">Customer</a></li>
+            <li class="active">Display Customer</li>
 
         </ol>
     </section>
@@ -25,7 +25,7 @@
             ?>
 
             <div class="box-header with-border">
-                <h3 class="box-title">Edit Vendor</h3>
+                <h3 class="box-title">Edit Customer</h3>
 
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -36,7 +36,7 @@
 
                     
                     <div class="form-group">
-                        <label class="col-sm-1 control-label">Vendor</label>
+                        <label class="col-sm-1 control-label">Customer</label>
                         <div class="col-sm-1">
                             <input type="text" name="vendorId" class="form-control" placeholder="* Code" value="<?php echo $row->vendorId;?>" readonly required/>
                         </div>

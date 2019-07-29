@@ -37,7 +37,7 @@
                 
                     
                 <div class="form-group">
-                    <label class="col-sm-1 control-label">Vendor</label>
+                    <label class="col-sm-1 control-label">Customer</label>
                     <div class="col-sm-11">
                         <?php
                             $CI=&get_instance();

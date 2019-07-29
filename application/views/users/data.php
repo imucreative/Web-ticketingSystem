@@ -34,7 +34,7 @@
                             <th width='30%'><center>NAME</center></th>
                             <th width='20%'><center>USERNAME</center></th>
                             <th width='10%'><center>STATUS</center></th>
-                            <th width='15%'><center>VENDOR</center></th>
+                            <th width='15%'><center>CUSTOMER</center></th>
                             <th width='15%'>
                                 <center>
                                     <button class="btn btn-primary btn-sm" onclick="addUsers()"><i class="fa fa-plus"></i> Input</button>

@@ -37,7 +37,7 @@
                 
                     
                 <div class="form-group">
-                    <label class="col-sm-1 control-label">Vendor</label>
+                    <label class="col-sm-1 control-label">Customer</label>
                     <div class="col-sm-11">
                         <input type="hidden" name="deliveryId" value="<?php echo $row->deliveryId;?>" required/>
                         <input type="text" name="vendor" class="form-control pull-right" id="vendor" placeholder="* Vendor" value="<?php echo $vendor->name;?>" readonly required>

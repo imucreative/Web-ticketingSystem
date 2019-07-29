@@ -131,7 +131,7 @@
         ?>
         <li>
           <a href="<?php echo base_url();?>index.php/vendor">
-            <i class="fa fa-building"></i> <span>Vendor</span>
+            <i class="fa fa-building"></i> <span>Customer</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-green">&nbsp</small>
             </span>

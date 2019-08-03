@@ -7,7 +7,7 @@ class Delivery_model extends Ci_Model{
     
     function selectAll(){
       $this->db->where('delete', 0);
-      $this->db->order_by('datesys', 'DESC');
+      $this->db->order_by('schedule', 'desc');
       $query		= $this->db->get($this->table);
       return $query;
     }
@@ -15,7 +15,7 @@ class Delivery_model extends Ci_Model{
     function selectAllVendorLogin($vendorId){
       $this->db->where('vendorId', $vendorId);
       $this->db->where('delete', 0);
-      $this->db->order_by('datesys', 'DESC');
+      $this->db->order_by('schedule', 'desc');
       $query		= $this->db->get($this->table);
       return $query;
     }
@@ -24,7 +24,7 @@ class Delivery_model extends Ci_Model{
         $vendorId       = strtoupper($this->input->post('vendorId'));
         $description    = strtoupper($this->input->post('description'));
         $schedule       = strtoupper($this->input->post('schedule'));
-        $policeNumber   = strtoupper($this->input->post('policeNumber'));
+        $vehicleId   = strtoupper($this->input->post('vehicleId'));
         $nik            = strtoupper($this->input->post('nik'));
 		    $driver		      = strtoupper($this->input->post('driver'));
 		
@@ -32,7 +32,7 @@ class Delivery_model extends Ci_Model{
             'vendorId'      => $vendorId,
             'description'   => $description,
             'schedule'      => $schedule,
-            'policeNumber'  => $policeNumber,
+            'vehicleId'     => $vehicleId,
             'nik'           => $nik,
             'driver'        => $driver,
             'datesys'       => date("Y-m-d")
@@ -53,7 +53,7 @@ class Delivery_model extends Ci_Model{
       $vendorId       = strtoupper($this->input->post('vendorId'));
       $description    = strtoupper($this->input->post('description'));
       $schedule       = strtoupper($this->input->post('schedule'));
-      $policeNumber   = strtoupper($this->input->post('policeNumber'));
+      $vehicleId      = strtoupper($this->input->post('vehicleId'));
       $nik            = strtoupper($this->input->post('nik'));
       $driver         = strtoupper($this->input->post('driver'));
       
@@ -61,7 +61,7 @@ class Delivery_model extends Ci_Model{
         'vendorId'      => $vendorId,
         'description'   => $description,
         'schedule'      => $schedule,
-        'policeNumber'  => $policeNumber,
+        'vehicleId'     => $vehicleId,
         'nik'           => $nik,
         'driver'        => $driver,
         'datesys'       => date("Y-m-d")
@@ -94,6 +94,19 @@ class Delivery_model extends Ci_Model{
       );
       $this->db->where('deliveryId', $deliveryId);
       $this->db->update($this->table, $data);
+    }
+
+    function selectQueryDeliveryReport($data){
+      $this->db->where('delete', 0);
+      if($data['vehicleId']!="-"){
+        $this->db->where('vehicleId', $data['vehicleId']);
+      }
+      $this->db->where('vendorId', $data['vendorId']);
+      $this->db->where('schedule >=',$data['from']);
+      $this->db->where('schedule <=',$data['to']);
+      $this->db->order_by('datesys', 'DESC');
+      $query		= $this->db->get($this->table);
+      return $query;
     }
 
 }

@@ -27,43 +27,8 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body onload="window.print();">
-<div class="wrapper">
-  <!-- Main content -->
   
-  
-  <!-- Main content -->
-  <section class="invoice">
-      <!-- title row -->
-      <div class="row">
-        <div class="col-xs-12">
-          <h2 class="page-header">
-            <i class="fa fa-globe"></i> <?php echo get_data_info('name');?>
-            <small class="pull-right">Date: <?php echo tgl_indo(date('Y-m-d'));?></small>
-          </h2>
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- info row -->
-      
-
-
-
-      <?php echo $contents; ?>
-
-
-
-
-
-      <!-- this row will not appear when printing -->
-      <div class="row no-print">
-        <div class="col-xs-12">
-          <button type="button" class="btn btn-sm btn-success" onclick="window.print()"><i class="fa fa-print"></i> Print</button>
-        </div>
-      </div>
-    </section>
+  <?php echo $contents; ?>
     
-  <!-- /.content -->
-</div>
-<!-- ./wrapper -->
 </body>
 </html>

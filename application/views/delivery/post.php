@@ -42,7 +42,10 @@
                         <?php
                             $CI=&get_instance();
                             $CI->load->model('Vendor_model');
-                            $rowVendor    = $CI->Vendor_model->getVendorById($this->session->userdata('vendorId'))->row();
+                            $CI->load->model('Vehicle_model');
+                            $rowVendor  = $CI->Vendor_model->getVendorById($this->session->userdata('vendorId'))->row();
+                            $vehicle    = $CI->Vehicle_model->selectVehicleByVendorId($rowVendor->vendorId)->result();
+
                         ?>
                         <input type="hidden" name="vendorId" value="<?php echo $this->session->userdata('vendorId');?>" required/>
                         <input type="text" name="vendor" class="form-control pull-right" id="vendor" placeholder="* Vendor" value="<?php echo $rowVendor->name;?>" readonly required>
@@ -67,16 +70,22 @@
                 <div class="form-group">
                     <label class="col-sm-1 control-label">Schedule</label>
                     <div class="col-sm-5">
-                        <div class="input-group date">
+                        <div class="input-group">
                             <input type="text" name="schedule" class="form-control pull-right" id="schedule" placeholder="* Schedule" readonly required>
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
                         </div>
                     </div>
-                    <label class="col-sm-1 control-label">No.Police</label>
+                    <label class="col-sm-1 control-label">Vehicle</label>
                     <div class="col-sm-5">
-                        <input type="text" name="policeNumber" class="form-control" placeholder="* X-XXXX-XX" required/>
+                        <select class="form-control" name="vehicleId" required>
+                            <?php
+                                foreach ($vehicle as $veh){
+                                    echo "<option value='$veh->vehicleId'>$veh->type | $veh->policeNumber</option>";
+                                }
+                            ?>
+                        </select>
                     </div>
                     
                 </div>

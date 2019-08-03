@@ -4,7 +4,8 @@
         function __construct() {
             parent::__construct();
             $this->load->model('Delivery_model', 'delivery');
-			$this->load->model('Vendor_model', 'vendor');
+            $this->load->model('Vendor_model', 'vendor');
+            $this->load->model('Vehicle_model', 'vehicle');
 
             if(!$this->session->userdata('userId')){
                 redirect('auth/logout');
@@ -19,6 +20,7 @@
             $status     = $this->session->userdata('status');
             if($status==3){
                 $data['result']=  $this->delivery->selectAllVendorLogin($vendorId)->result();
+                
             }else{
                 $data['result']=  $this->delivery->selectAll()->result();
             }
@@ -31,8 +33,8 @@
                 redirect('delivery');
 
 			}else{
-				$data['vendor']	= $this->vendor->selectAll()->result();
-				$this->template->load('template','delivery/post', $data);
+                
+				$this->template->load('template','delivery/post');
 			}
         }
 
@@ -61,6 +63,7 @@
             $deliveryId			= $this->uri->segment(3);
             $data['row']        = $this->delivery->getDeliveryById($deliveryId)->row();
             $data['vendor']     = $this->vendor->getVendorById($data['row']->vendorId)->row();
+            $data['vehicle']    = $this->vehicle->getById($data['row']->vehicleId)->row();
             $this->template->load('template', 'delivery/display', $data);
         }
 
@@ -84,6 +87,7 @@
             $deliveryId			= $this->uri->segment(3);
             $data['row']        = $this->delivery->getDeliveryById($deliveryId)->row();
             $data['vendor']     = $this->vendor->getVendorById($data['row']->vendorId)->row();
+            $data['vehicle']    = $this->vehicle->getById($data['row']->vehicleId)->row();
             $this->template->load('template', 'delivery/print', $data);
         }
 
@@ -91,6 +95,7 @@
             $deliveryId			= $this->uri->segment(3);
             $data['row']        = $this->delivery->getDeliveryById($deliveryId)->row();
             $data['vendor']     = $this->vendor->getVendorById($data['row']->vendorId)->row();
+            $data['vehicle']    = $this->vehicle->getById($data['row']->vehicleId)->row();
             $this->template->load('template_report', 'delivery/printReport', $data);
         }
     }

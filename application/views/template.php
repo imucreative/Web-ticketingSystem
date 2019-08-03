@@ -127,7 +127,7 @@
         </li>
 
         <?php
-          if(($this->session->userdata('status')==1)||($this->session->userdata('status')==2)){
+          if($this->session->userdata('status')==1){
         ?>
         <li>
           <a href="<?php echo base_url();?>index.php/vendor">
@@ -137,9 +137,24 @@
             </span>
           </a>
         </li>
+
+        <?php
+          }
+          if(($this->session->userdata('status')==1)||($this->session->userdata('status')==3)){
+        ?>
+        <li>
+          <a href="<?php echo base_url();?>index.php/report">
+            <i class="fa fa-print"></i> <span>Report</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-yellow">&nbsp</small>
+            </span>
+          </a>
+        </li>
         <?php
           }
         ?>
+
+
 
         <?php
           if($this->session->userdata('status')==1){
@@ -148,6 +163,11 @@
           <li><a href="<?php echo base_url();?>index.php/category"><i class="fa fa-circle-o text-red"></i> <span>Category</span></a></li>
           <li><a href="<?php echo base_url();?>index.php/users"><i class="fa fa-circle-o text-yellow"></i> <span>Users</span></a></li>
           <li><a href="<?php echo base_url();?>index.php/info"><i class="fa fa-circle-o text-aqua"></i> <span>Info</span></a></li>
+        <?php
+          }else if($this->session->userdata('status')==3){
+        ?>
+          <li class="header">MASTER DATA</li>
+          <li><a href="<?php echo base_url();?>index.php/vehicle"><i class="fa fa-circle-o text-blue"></i> <span>Vehicle</span></a></li>
         <?php
           }
         ?>
@@ -199,13 +219,47 @@
 <!-- customer ajax -->
 <script src="<?php echo base_url()?>template/AdminLTE/dist/js/jsCustomCategory.js"></script>
 <script src="<?php echo base_url()?>template/AdminLTE/dist/js/jsCustomUsers.js"></script>
+<script src="<?php echo base_url()?>template/AdminLTE/dist/js/jsCustomVehicle.js"></script>
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree();
     $('.myTable').DataTable();
-    $('#schedule').datepicker({
+    $('#schedule,#from,#to').datepicker({
       autoclose: true,
-      format: 'yyyy-mm-dd'
+      format: "yyyy-mm-dd",
+      orientation: "bottom auto",
+      todayHighlight: true
+    });
+    $('.status').change(function(){
+      var id = $(this).val();
+      //alert(id);
+      //if(id==2){
+        //$(".vendor").hide();
+      //}else{
+        //$(".vendor").show();
+      //}
+      
+    });
+
+    $('.vendor').change(function(){
+        var id=$(this).val();
+        $.ajax({
+            url : "<?php echo base_url();?>index.php/vehicle/ajaxGetSubVehicle",
+            method : "POST",
+            data : {id: id},
+            async : false,
+            dataType : 'json',
+            success: function(data){
+                var html = '';
+                var i;
+                html += "<option value='-'>- SELECT -</option>";
+                for(i=0; i<data.length; i++){
+                  html += "<option value="+data[i].vehicleId+">"+data[i].type+" | "+data[i].policeNumber+"</option>";
+                }
+                $('.vehicle').html(html);
+                  
+            }
+        });
     });
   })
 </script>

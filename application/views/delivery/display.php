@@ -56,15 +56,15 @@
                     <label class="col-sm-1 control-label">Schedule</label>
                     <div class="col-sm-5">
                         <div class="input-group date">
-                            <input type="text" name="schedule" class="form-control pull-right" placeholder="* Schedule" value="<?php echo $row->schedule;?>" readonly required>
+                            <input type="text" name="schedule" class="form-control pull-right" placeholder="* Schedule" value="<?php echo tgl_indo($row->schedule);?>" readonly required>
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
                         </div>
                     </div>
-                    <label class="col-sm-1 control-label">No.Police</label>
+                    <label class="col-sm-1 control-label">Vehicle</label>
                     <div class="col-sm-5">
-                        <input type="text" name="policeNumber" class="form-control" placeholder="* X-XXXX-XX" value="<?php echo $row->policeNumber;?>" readonly required/>
+                        <input type="text" name="vehicleId" class="form-control" placeholder="*" value="<?php echo $vehicle->type." | ".$vehicle->policeNumber;?>" readonly required/>
                     </div>
                     
                 </div>
@@ -85,11 +85,11 @@
                 <div class="form-group">
                     <label class="col-sm-1 control-label">In</label>
                     <div class="col-sm-5">
-                        <input type="text" name="in" class="form-control" placeholder="*" value="<?php echo $row->dateIn;?>" readonly required/>
+                        <input type="text" name="in" class="form-control" placeholder="*" value="<?php echo tgl_indo(substr($row->dateIn,0,10))." - ".substr($row->dateIn,-8);?>" readonly required/>
                     </div>
                     <label class="col-sm-1 control-label">Out</label>
                     <div class="col-sm-5">
-                        <input type="text" name="out" class="form-control" placeholder="*" value="<?php echo $row->dateOut;?>" readonly required/>
+                        <input type="text" name="out" class="form-control" placeholder="*" value="<?php echo tgl_indo(substr($row->dateOut,0,10))." - ".substr($row->dateOut,-8);?>" readonly required/>
                     </div>
                 </div>
 

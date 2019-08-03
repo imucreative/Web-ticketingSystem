@@ -1,44 +1,16 @@
 <?php
-class User_model extends CI_Model{
+class Vehicle_model extends CI_Model{
     
-	public $table	= "dtbusers";
-	public $tableStatus	= "dtbstatususer";
-    var $column_order = array('userId','name','username','status','vendorId',null); //set column field database for datatable orderable
-	var $column_search = array('userId','name','username','status','vendorId'); //set column field database for datatable searchable just firstname , lastname , address are searchable
-	var $order = array('name' => 'desc'); // default order 
-	
-	function chekLogin($username, $password){
-		$this->db->where('delete',0);
-		$this->db->where('username', $username);
-		$this->db->where('password', md5($password));
-		$user	= $this->db->get($this->table);
-		return $user;
-	}
-	
-	function updateProfil() {
-		$userId     = $this->input->post('userId', TRUE);
-		$password   = $this->input->post('password', TRUE);
-		$status		= $this->session->userdata('status');
-		$data = array(
-			'password'	=> md5($password),
-			'status'	=> $status
-		);
-		$this->db->where('userId', $userId);
-		$this->db->update($this->table, $data);
-	}
-	
-	function chek_user($username){
-		$this->db->where('delete',0);
-		$this->db->where('username', $username);
-		$user	= $this->db->get($this->table);
-		return $user;
-	}
+	public $table	= "dtbvehicle";
+    var $column_order = array('vehicleId','name','type','chasis','engine','policeNumber',null); //set column field database for datatable orderable
+	var $column_search = array('vehicleId','name','type','chasis','engine','policeNumber'); //set column field database for datatable searchable just firstname , lastname , address are searchable
+	var $order = array('vehicleId'=>'desc'); // default order 
 	
 	//==================================================================================================
 	
     private function _get_datatables_query(){
 		$this->db->where('delete',0);
-		$this->db->where('status!=', 1);
+		$this->db->where('vendorId', $this->session->userdata('vendorId'));
 		$this->db->from($this->table);
 		$i = 0;
 		foreach ($this->column_search as $item){ // loop column
@@ -93,54 +65,38 @@ class User_model extends CI_Model{
 	}
 
     public function update($data){
-        $this->db->where('userId', $data['userId']);
+        $this->db->where('vehicleId', $data['vehicleId']);
 		$this->db->update($this->table, $data);
 		return $this->db->affected_rows();
 	}
 
 	public function deleteById($data){
-        $this->db->where('userId', $data['userId']);
+        $this->db->where('vehicleId', $data['vehicleId']);
         $this->db->update($this->table, $data);
 		return $this->db->affected_rows();
     }
     
-    public function getById($userId){
+    public function getById($vehicleId){
+		$this->db->where('vehicleId',$vehicleId);
 		$this->db->from($this->table);
-		$this->db->where('userId',$userId);
 		$query = $this->db->get();
-		return $query->row();
+		return $query;
+	}
+
+	public function selectVehicleByVendorId($vendorId){
+		$this->db->where('vendorId', $vendorId);
+		$this->db->order_by('name','asc');
+		$query	= $this->db->get($this->table);
+		return $query;
 	}
 
 	function selectAll(){
 		$this->db->where('delete', 0);
 		$query		= $this->db->get($this->table);
 		return $query;
-	}
+    }
 
-	function selectAllStatus(){
-		$this->db->where('delete', 0);
-		$this->db->where('statusId!=', 1);
-		$query		= $this->db->get($this->tableStatus);
-		return $query;
-	}
 	
-	function getStatusNameByStatusId($statusId){
-		$this->db->where('delete', 0);
-		$this->db->where('statusId', $statusId);
-		$query	= $this->db->get($this->tableStatus);
-		//print_r($this->db->last_query());
-		//die();
-		return $query;
-		
-	}
-
-	function getUserByUserId($userId){
-		$this->db->where('delete', 0);
-		$this->db->where('userId', $userId);
-		$query	= $this->db->get($this->table);
-		return $query;
-		
-	}
 	
     
 }

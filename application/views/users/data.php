@@ -81,8 +81,9 @@
                       <div class="form-group has-feedback">
                         <input type="text" name="username" placeholder="Username" class="form-control username" />
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                      </div>
                         <span class="help-block"></span>
+                      </div>
+                        
                     </div>
                     <div class="form-group"><label>* Password</label> 
                         <div class="form-group has-feedback">
@@ -94,7 +95,7 @@
                     
 
                     <div class="form-group statusUser"><label>* Status</label> 
-                      <select class="form-control" name="status">
+                      <select class="form-control status" name="status">
                           <?php
                               foreach ($status as $stat){
                                   echo "<option value='$stat->statusId'>$stat->name</option>";
@@ -104,7 +105,7 @@
                     </div>
 
                     <div class="form-group vendor"><label>* Vendor</label> 
-                      <select class="form-control" name="vendorId">
+                      <select class="form-control vendor" name="vendorId">
                           <?php
                               foreach ($vendor as $vend){
                                   echo "<option value='$vend->vendorId'>$vend->name</option>";

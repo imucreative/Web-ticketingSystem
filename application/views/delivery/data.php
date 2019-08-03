@@ -32,13 +32,13 @@
                     <th width='7%'></th>
                     <th width='19%'><center>CUSTOMER</center></th>
                     <th width='13%'><center>SCHEDULE</center></th>
-                    <th width='13%'><center>NO.POLICE</center></th>
+                    <th width='19%'><center>VEHICLE</center></th>
                     <th width='13%'><center>NIK</center></th>
-                    <th width='19%'><center>DRIVER</center></th>
+                    <th width='13%'><center>DRIVER</center></th>
                     <th width='16%'>
                         <?php 
                           $stat = $this->session->userdata('status');
-                          if($stat == 3){ //ganti jadi 3
+                          if($stat == 3){
                         ?>
                         <center>
                             <a href="<?php echo base_url();?>index.php/delivery/post" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Input</a>
@@ -56,7 +56,9 @@
                     foreach ($result as $r){
                         $CI=&get_instance();
                         $CI->load->model('Vendor_model');
+                        $CI->load->model('Vehicle_model');
                         $rowVendor    = $CI->Vendor_model->getVendorById($r->vendorId)->row();
+                        $rowVehicle   = $CI->Vehicle_model->getById($r->vehicleId)->row();
                 ?>
                         <tr>
                             <?php
@@ -75,8 +77,8 @@
                               }
                             ?>
                             <td><?php echo $rowVendor->name;?></td>
-                            <td align='center'><?php echo tgl_indo($r->schedule);?></td>
-                            <td align='center'><?php echo $r->policeNumber;?></td>
+                            <td><?php echo tgl_indo($r->schedule);?></td>
+                            <td><?php echo $rowVehicle->type." | ".$rowVehicle->policeNumber;?></td>
                             <td align='center'><?php echo $r->nik;?></td>
                             <td><?php echo $r->driver;?></td>
                             <td align='center'>

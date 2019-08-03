@@ -22,7 +22,7 @@
         <div class="col-xs-12">
           <h2 class="page-header">
             <i class="fa fa-globe"></i> <?php echo get_data_info('name');?>
-            <small class="pull-right">Date: <?php echo tgl_indo(date('Y-m-d'));?></small>
+            <small class="pull-right"><?php echo tgl_indo(date('Y-m-d'));?></small>
           </h2>
         </div>
         <!-- /.col -->
@@ -45,10 +45,10 @@
               </tr>
               <tr>
                 <th>Schedule</th>
-                <td>: <?php echo tgl_indo($row->schedule);?></td>
+                <td width="30%">: <?php echo tgl_indo($row->schedule);?></td>
 
-                <th style="width:15%">No.Police</th>
-                <td>: <?php echo $row->policeNumber;?></td>
+                <th style="width:15%">Vehicle</th>
+                <td width="30%">: <?php echo $vehicle->type." | ".$vehicle->policeNumber;?></td>
               </tr>
               
               <tr>

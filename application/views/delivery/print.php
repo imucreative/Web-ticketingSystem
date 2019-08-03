@@ -89,7 +89,7 @@
       <div class="row no-print">
         <div class="col-xs-12">
         <a href="<?php echo base_url();?>index.php/delivery" class="btn btn-default" ><i class='fa fa-arrow-left'></i> Cancel</a>  
-        <a href="<?php echo base_url();?>index.php/delivery/printDelivery/<?php echo $this->uri->segment(3);?>" target="_blank" class="btn btn-success"><i class="fa fa-print"></i> Print</a>
+        <a href="<?php echo base_url();?>index.php/delivery/printDeliveryReport/<?php echo $this->uri->segment(3);?>" target="_blank" class="btn btn-success"><i class="fa fa-print"></i> Print</a>
         
         </div>
       </div>

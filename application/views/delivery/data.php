@@ -88,10 +88,10 @@
                                         if(empty($r->dateIn)){
                                           echo anchor('delivery/edit/'.$r->deliveryId, '<i class="fa fa-edit"></i>', 'class="btn btn-sm btn-info" title="Edit"')." | ".
                                           anchor("delivery/delete/".$r->deliveryId, '<i class="fa fa-trash-o"></i>', ["class"=>"btn btn-sm btn-danger", "title"=>'Delete', "onclick"=>"return confirm('Are you sure delete this data?')"])." | ".
-                                          anchor('delivery/print/'.$r->deliveryId, '<i class="fa fa-print"></i>', 'class="btn btn-sm btn-default" title="Print"');
+                                          anchor('delivery/printDelivery/'.$r->deliveryId, '<i class="fa fa-print"></i>', 'class="btn btn-sm btn-default" title="Print"');
                                         }else{
                                           echo anchor('delivery/display/'.$r->deliveryId, '<i class="fa fa-search"></i>', 'class="btn btn-sm btn-info" title="Display"')." | ".
-                                          anchor('delivery/print/'.$r->deliveryId, '<i class="fa fa-print"></i>', 'class="btn btn-sm btn-default" title="Print"');
+                                          anchor('delivery/printDelivery/'.$r->deliveryId, '<i class="fa fa-print"></i>', 'class="btn btn-sm btn-default" title="Print"');
                                         }
                                     }elseif($stat == 2){
                                       if(empty($r->dateIn)){

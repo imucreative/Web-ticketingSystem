@@ -83,7 +83,7 @@
 			redirect('delivery');
         }
 
-        function print(){
+        function printDelivery(){
             $deliveryId			= $this->uri->segment(3);
             $data['row']        = $this->delivery->getDeliveryById($deliveryId)->row();
             $data['vendor']     = $this->vendor->getVendorById($data['row']->vendorId)->row();
@@ -91,7 +91,7 @@
             $this->template->load('template', 'delivery/print', $data);
         }
 
-        function printDelivery(){
+        function printDeliveryReport(){
             $deliveryId			= $this->uri->segment(3);
             $data['row']        = $this->delivery->getDeliveryById($deliveryId)->row();
             $data['vendor']     = $this->vendor->getVendorById($data['row']->vendorId)->row();

@@ -104,7 +104,7 @@
                       </select>
                     </div>
 
-                    <div class="form-group vendor"><label>* Vendor</label> 
+                    <div class="form-group vendor"><label>* Customer</label> 
                       <select class="form-control vendor" name="vendorId">
                           <?php
                               foreach ($vendor as $vend){
@@ -118,7 +118,7 @@
                       <input type="text" readonly placeholder="Status" class="form-control status" />
                     </div>
 
-                    <div class="form-group dispVendor"><label>* Vendor</label> 
+                    <div class="form-group dispVendor"><label>* Customer</label> 
                       <input type="text" readonly placeholder="Vendor" class="form-control vendorName" />
                     </div>
 

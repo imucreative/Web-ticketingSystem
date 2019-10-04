@@ -56,12 +56,22 @@
 		
         public function ajax_add(){
             $this->_validate();
+            $name = strtoupper($this->input->post('name'));
+            $username = $this->input->post('username');
+            $password = md5($this->input->post('password'));
+            $status = strtoupper($this->input->post('status'));
+            $vendorId = strtoupper($this->input->post('vendorId'));
+            if($status==2){
+                $vendor = "";
+            }else{
+                $vendor = $vendorId;
+            }
             $data = array(
-				'name' => strtoupper($this->input->post('name')),
-				'username' => $this->input->post('username'),
-				'password' => md5($this->input->post('password')),
-                'status' => strtoupper($this->input->post('status')),
-                'vendorId' => strtoupper($this->input->post('vendorId'))
+				'name' => $name,
+				'username' => $username,
+				'password' => $password,
+                'status' => $status,
+                'vendorId' => $vendor
 			);
             $insert = $this->users->save($data);
             echo json_encode(array("status" => TRUE));

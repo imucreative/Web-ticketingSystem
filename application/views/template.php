@@ -127,8 +127,24 @@
         </li>
 
         <?php
+          if(($this->session->userdata('status')==1)||($this->session->userdata('status')==2)){
+        ?>
+            <li>
+              <a href="<?php echo base_url();?>index.php/visitor">
+                <i class="fa fa-users"></i> <span>Visitors</span>
+                <span class="pull-right-container">
+                  <small class="label pull-right bg-orange">&nbsp</small>
+                </span>
+              </a>
+            </li>
+        <?php
+          }
+        ?>
+
+        <?php
           if($this->session->userdata('status')==1){
         ?>
+          
         <li>
           <a href="<?php echo base_url();?>index.php/vendor">
             <i class="fa fa-building"></i> <span>Customer</span>
@@ -220,6 +236,7 @@
 <script src="<?php echo base_url()?>template/AdminLTE/dist/js/jsCustomCategory.js"></script>
 <script src="<?php echo base_url()?>template/AdminLTE/dist/js/jsCustomUsers.js"></script>
 <script src="<?php echo base_url()?>template/AdminLTE/dist/js/jsCustomVehicle.js"></script>
+<script src="<?php echo base_url()?>template/AdminLTE/dist/js/jsCustomVisitor.js"></script>
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree();

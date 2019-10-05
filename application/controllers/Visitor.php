@@ -1,5 +1,6 @@
 <?php
-	ini_set('display_errors',0);
+    ini_set('display_errors',0);
+    date_default_timezone_set("Asia/Bangkok");
 	class Visitor extends CI_Controller{
 		
 		function __construct() {
@@ -37,7 +38,7 @@
                     <a class="btn btn-sm btn-warning" href="javascript:void(0)" title="Out" onclick="visitorOut('."'".$res->visitorId."'".')"><i class="fa fa-sign-out"></i></a>
                     <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="deleteVisitor('."'".$res->visitorId."'".')"><i class="fa fa-trash"></i></a></center>';
                 }else{
-                    $row[] = '<font color="red"><center>Visitor Out</center></font>';
+                    $row[] = '<center><span class="label label-warning">Out : '.$res->dateOut.'</span></center>';
                 }
                 //isset($data[0]) ? $data[0] : null; 
                 //add html for action
@@ -57,7 +58,11 @@
         }
 		
 		//==================================================================================================
-		
+        
+        function dateNow(){
+            date_default_timezone_set("Asia/Bangkok");
+            echo date('Y-m-d H:i:s');
+        }
         public function ajax_add(){
             $this->_validate();
             $data = array(

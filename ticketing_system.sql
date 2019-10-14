@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 04 Okt 2019 pada 17.13
+-- Waktu pembuatan: 14 Okt 2019 pada 04.16
 -- Versi server: 10.3.16-MariaDB
 -- Versi PHP: 7.2.20
 
@@ -248,7 +248,9 @@ CREATE TABLE `dtrvisitor` (
 INSERT INTO `dtrvisitor` (`visitorId`, `nip`, `name`, `policeNumber`, `type`, `keperluan`, `tujuan`, `dateIn`, `dateOutKode`, `dateOut`, `datesys`, `del`) VALUES
 (1, '112120012', 'budi', 'B-1290-MN', 'Honda Vario', 'anter makanan', 'pak anto', '2019-10-03 18:32:21', 1, '2019-10-03 19:32:21', '2019-10-03 18:32:21', 0),
 (2, '3', '3', '3', '3', '3', '3', '2019-10-03 17:00:58', 1, '2019-10-04 17:01:19', '2019-10-03 17:00:58', 0),
-(3, '45', '5', '5', '5', '5', '5', '2019-10-04 16:57:50', 0, '0000-00-00 00:00:00', '2019-10-04 16:57:50', 1);
+(3, '45', '5', '5', '5', '5', '5', '2019-10-04 16:57:50', 0, '0000-00-00 00:00:00', '2019-10-04 16:57:50', 1),
+(4, '098', '55', '5', '5', '5', '5', '2019-10-05 01:31:22', 0, '0000-00-00 00:00:00', '2019-10-05 01:31:22', 0),
+(5, '098', '098', '098', '098', '098', '098', '2019-10-05 06:43:45', 0, '0000-00-00 00:00:00', '2019-10-05 06:43:45', 0);
 
 --
 -- Indexes for dumped tables
@@ -352,7 +354,7 @@ ALTER TABLE `dtrdelivery`
 -- AUTO_INCREMENT untuk tabel `dtrvisitor`
 --
 ALTER TABLE `dtrvisitor`
-  MODIFY `visitorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `visitorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
